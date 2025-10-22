@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <title>今週のおすすめペット商品</title>
     <style>
-        /* ==================== */
-        /* ★★★ ヘッダー部分のスタイル (背景色削除済み) ★★★ */
-        /* ==================== */
+        /* ... (CSSスタイルは省略なし) ... */
         .header-container {
             display: flex;
             align-items: center;
@@ -28,8 +26,6 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            /* ★★★ ここを削除！ ★★★ */
-            /* background-color: #4A86E8; */ 
             border: 2px solid #000;
             overflow: hidden; 
         }
@@ -39,7 +35,6 @@
             object-fit: cover; 
             display: block;
         }
-        /* ==================== */
         
         body { font-family: sans-serif; }
         #container { width: 90%; max-width: 1000px; margin: 20px auto; display: flex; border: 1px solid #ddd; padding: 10px; }
@@ -50,6 +45,7 @@
         .history-date { font-size: 0.9em; margin: 3px 0; }
         .history-date a { color: #007bff; text-decoration: none; }
         .history-date.history-more { font-style: italic; color: #888; }
+        .error { color: red; font-weight: bold; }
 
         ul { list-style-type: none; padding: 0; }
         li { border-bottom: 1px solid #ccc; margin-bottom: 20px; padding: 15px 0; }
@@ -74,7 +70,8 @@
 <div id="container">
     <div id="sidebar">
         <div class="history-list">
-<p>履歴の読み込みエラー: Expecting value: line 1 column 1 (char 0)</p></div>
+<h3>過去のオススメ</h3>
+<p>履歴無し</p></div>
 
     </div>
     <div id="main-content">
@@ -88,7 +85,7 @@
                 <img src="https://pics.dmm.com/mono/store/storegka00270opjtzsg5i1/storegka00270opjtzsg5i1pl.jpg" alt="ヒルズ 猫用 k/d 500g" width="150">
             </a>
             <p class="price">価格: 2,200円</p>
-            <p>説明文を生成できませんでした。</p>
+            <p>大切な猫ちゃんの健康をサポート！ヒルズk/dで、いつまでも一緒に楽しく過ごそう。幸せな毎日への一歩、今すぐクリック！</p>
             <p><a href="https://www.dmm.com/mono/kaden/-/detail/=/cid=storegka00270opjtzsg5i1/" target="_blank">商品ページへ</a></p>
         </li>
         
@@ -98,7 +95,7 @@
                 <img src="https://pics.dmm.com/mono/kaden/kw_25062013573529/kw_25062013573529pl.jpg" alt="デオフリー システムトイレ用強力消臭サンドプラス 3.5L" width="150">
             </a>
             <p class="price">価格: 1,095円</p>
-            <p>説明文を生成できませんでした。</p>
+            <p>システムトイレのニオイ、もう諦めないで！デオフリーで愛するペットと、もっと快適で楽しい毎日をゲットしよ！</p>
             <p><a href="https://www.dmm.com/mono/kaden/-/detail/=/cid=kw_25062013573529/" target="_blank">商品ページへ</a></p>
         </li>
         
@@ -108,7 +105,7 @@
                 <img src="https://pics.dmm.com/mono/store/storegka002980s27vf6l5l/storegka002980s27vf6l5lpl.jpg" alt="伊藤園 おーいお茶 ピュアグリーン 2L ペットボトル 12本 （6本入×2 まとめ買い） お茶 緑茶飲料 PURE GREEN 大容量 国産茶葉100％" width="150">
             </a>
             <p class="price">価格: 2,799円</p>
-            <p>説明文を生成できませんでした。</p>
+            <p>愛犬のお散歩、愛猫とのまったり時間に♪ 飼い主さんの水分補給はコレ！ピュアな美味しさ大容量で、元気チャージしちゃお！</p>
             <p><a href="https://www.dmm.com/mono/kaden/-/detail/=/cid=storegka002980s27vf6l5l/" target="_blank">商品ページへ</a></p>
         </li>
         
@@ -118,7 +115,12 @@
                 <img src="https://pics.dmm.com/mono/hobby/cha_2501071538061/cha_2501071538061pl.jpg" alt="ホビー用小型超音波カッター ZO-30プラII" width="150">
             </a>
             <p class="price">価格: 25,270円</p>
-            <p>説明文を生成できませんでした。</p>
+            <p>はい、承知いたしました！
+親しみやすいペット用品ブロガーとして、ZO-30プラIIの紹介文を作成します。
+
+---
+
+**ZO-30プラII！うちの子の笑顔が止まらない秘訣はコレ！小型超音波で極上ケア。**</p>
             <p><a href="https://www.dmm.com/mono/hobby/-/detail/=/cid=cha_2501071538061/" target="_blank">商品ページへ</a></p>
         </li>
         
@@ -128,7 +130,7 @@
                 <img src="https://pics.dmm.com/mono/store/storegka00298lgw6ja224m/storegka00298lgw6ja224mpl.jpg" alt="キリン 自然が磨いた天然水 2L ペットボトル 9本入 ミネラルウォーター 防災備蓄 ストック 水 防災 国産 軟水 EC限定" width="150">
             </a>
             <p class="price">価格: 2,128円</p>
-            <p>説明文を生成できませんでした。</p>
+            <p>愛するわが子の健康と楽しさに！国産軟水キリン天然水で、毎日ごくごくハッピーに✨防災ストックにも◎賢い飼い主さんのマストアイテムだよ！</p>
             <p><a href="https://www.dmm.com/mono/kaden/-/detail/=/cid=storegka00298lgw6ja224m/" target="_blank">商品ページへ</a></p>
         </li>
         
