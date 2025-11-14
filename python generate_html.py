@@ -49,10 +49,10 @@ def generate_history_html():
         
         for entry in history[:display_limit]:
             raw_filename = entry.get("filename", f"recommend_{entry['date'].replace('/', '')}.html")
-            history_html += f'  <p class="history-date"><a href="{raw_filename}">{entry["date"]}</a></p>\n' 
+            history_html += f'  <p class="history-date"><a href="{raw_filename}">{entry["date"]}</a></p>\n' 
         
         if len(history) > display_limit:
-             history_html += f'  <p class="history-date history-more">... 他 {len(history) - display_limit}日分</p>\n'
+             history_html += f'  <p class="history-date history-more">... 他 {len(history) - display_limit}日分</p>\n'
     else:
         # historyが空の場合（ファイルなし、または読み込みエラー）
         history_html += '<p>履歴無し</p>'
@@ -158,10 +158,39 @@ def generate_daily_html(items, page_title, filename_with_path, history_sidebar):
         .error {{ color: red; font-weight: bold; }}
 
         ul {{ list-style-type: none; padding: 0; }}
-        li {{ border-bottom: 1px solid #ccc; margin-bottom: 20px; padding: 15px 0; }}
-        img {{ display: block; margin: 10px 0; border-radius: 4px; max-width: 150px; height: auto; }}
-        p {{ margin: 5px 0; }}
+        
+        /* 💡 修正点: 商品リストのレイアウトを改善するためのCSS */
+        li {{ 
+            border-bottom: 1px solid #ccc; 
+            margin-bottom: 20px; 
+            padding: 15px 0; 
+            display: flex; /* Flexboxで画像とテキストを横並びにする */
+            align-items: flex-start; /* 上揃え */
+            flex-wrap: wrap;
+        }}
+        
+        /* 💡 修正点: 画像コンテナのスタイル */
+        .item-image-container {{
+            flex: 0 0 150px; /* 画像の幅を固定 */
+            margin-right: 20px;
+        }}
+        
+        /* 💡 修正点: 画像そのもののスタイル */
+        img {{ 
+            display: block; 
+            border-radius: 4px; 
+            max-width: 150px; 
+            height: auto; 
+            margin: 0; /* 画像周りの余計なマージンを削除 */
+        }}
+        
+        /* 💡 修正点: テキストコンテナのスタイル */
+        .item-details {{
+            flex-grow: 1; /* 残りのスペースを占有 */
+        }}
+        
         .price {{ font-weight: bold; color: #E91E63; font-size: 1.1em; }}
+        .item-details p {{ margin: 5px 0; }} /* 詳細内の段落マージンを調整 */
     </style>
 </head>
 <body>
@@ -171,7 +200,7 @@ def generate_daily_html(items, page_title, filename_with_path, history_sidebar):
         <img src="header_left.jpg" alt="サイトイメージ画像 左">
     </div>
     <div class="header-title-box">
-        <h1>わんニャン！アフェリペット</h1> 
+        <h1>ジョイとパンのおすすめグッズ</h1> 
     </div>
     <div class="header-image">
         <img src="header_right.jpg" alt="サイトイメージ画像 右">
@@ -200,15 +229,20 @@ def generate_daily_html(items, page_title, filename_with_path, history_sidebar):
         # 紹介文を生成
         desc = generate_description(item['title'])
         
+        # 💡 修正点: HTML構造を変更し、画像とテキストを分離
         html_content += f"""
         <li>
-            <h2>{item['title']}</h2>
-            <a href="{item['url']}" target="_blank">
-                <img src="{item['image']}" alt="{item['title']}" width="150">
-            </a>
-            <p class="price">価格: {formatted_price}</p>
-            <p>{desc}</p>
-            <p><a href="{item['url']}" target="_blank">商品ページへ</a></p>
+            <div class="item-image-container">
+                <a href="{item['url']}" target="_blank">
+                    <img src="{item['image']}" alt="{item['title']}の商品画像">
+                </a>
+            </div>
+            <div class="item-details">
+                <h2>{item['title']}</h2>
+                <p class="price">価格: {formatted_price}</p>
+                <p>{desc}</p>
+                <p><a href="{item['url']}" target="_blank">商品ページへ</a></p>
+            </div>
         </li>
         """
 
